@@ -1,11 +1,17 @@
-name: Hello DevOps
+name: Deploy Website
 on: 
- push: 
-  branches: [ "main" ]
-
-jobs:
- hello: 
+ push:
+  branches: [ "main" ] 
+jobs: 
+ deploy: 
   runs-on: ubuntu-latest 
   steps:
-   - name: Print message 
-     run: echo "Hello DevOps! Un push a ete fait sur main."
+   - name: Deploy via SSH 
+     uses: appleboy/ssh-action@v1.0.0 
+     with: 
+      host: ${{ variables.SERVER_HOST }} 
+      username: ${{ variables.SERVER_USER }} 
+      key: ${{ secrets.SERVER_SSH_KEY }} 
+      script: | 
+       cd /var/www/divine-dongho.geek-devops.de/public_html 
+       git pull
