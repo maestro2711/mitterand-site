@@ -13,5 +13,5 @@ jobs:
       username: ${{ secrets.SERVER_USER }} 
       key: ${{ secrets.SERVER_SSH_KEY }} 
       script: | 
-       cd /var/www/divine-dongho.geek-devops.de/public_html 
+       cd /var/www/mitterand.geek-devops.de/public_html 
        git pull
